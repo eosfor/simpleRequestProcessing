@@ -1,5 +1,43 @@
-# SimPy Message Processing Simulation
+# Симуляция обработки очереди сообщений на SimPy
 
-Binder-ready notebook for a discrete-event simulation of 200,000 queued messages processed by 20 workers.
+[![Open in Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/eosfor/simpleRequestProcessing/main?labpath=simpy_message_processing.ipynb)
 
-Open `simpy_message_processing.ipynb` in Binder or JupyterLab and run all cells.
+Этот репозиторий содержит Jupyter notebook для discrete-event simulation обработки очереди сообщений с помощью [SimPy](https://simpy.readthedocs.io/).
+
+## Что моделируется
+
+- В очереди находится `200 000` сообщений.
+- Очередь обрабатывают `20` потоков/воркеров.
+- Каждый воркер берет одно сообщение, обрабатывает его и затем берет следующее.
+- Время обработки одного сообщения моделируется логнормальным распределением:
+  - 50-й перцентиль: `1.7` секунды;
+  - 95-й перцентиль: `3.6` секунды.
+
+## Что считает notebook
+
+- сколько сообщений обрабатывается всеми потоками в секунду и в минуту;
+- сколько сообщений обрабатывает каждый поток в секунду и в минуту;
+- сколько времени занимает обработка всей очереди;
+- как меняется скорость обработки во времени.
+
+## Графики
+
+Notebook строит графики:
+
+- общей скорости обработки в сообщениях в секунду;
+- общей скорости обработки в сообщениях в минуту;
+- скорости обработки по каждому потоку;
+- распределения времени обработки сообщений.
+
+## Запуск
+
+Нажмите badge **Open in Binder** выше, дождитесь запуска окружения и выполните все ячейки в `simpy_message_processing.ipynb`.
+
+Локальный запуск:
+
+```bash
+pip install -r requirements.txt
+jupyter lab
+```
+
+Затем откройте `simpy_message_processing.ipynb` и выполните все ячейки.
